@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let add = (a,b) => {
+        return parseFloat(a) + parseFloat(b)
+    }
+
+    let sub = (a,b) => a-b
+
+    let mul = (a,b) => a*b
+
+    let div = (a,b) => a/b
+
+    let puissance = (n, p) => Math.pow(n, p)
+
+    let fact = (n) => {
+        let res = 1
+
+        for(let i=n;i>1;i--){
+            res = res * i
+        }
+
+        return res
+    }
+
+    let choix = undefined
+    do{
+
+        choix = prompt("Menu: + - * / F P Q")
+        switch (choix) {
+            case '+':
+                a = prompt("Entrez un nombre")
+                b = prompt("Entrez un nombre")
+                res = add(a,b)
+                alert("Résultat : " + res)
+                break
+            case '-':
+                a = prompt("Entrez un nombre")
+                b = prompt("Entrez un nombre")
+                res = sub(a,b)
+                alert("Résultat : " + res)
+                break
+            case '*':
+                a = prompt("Entrez un nombre")
+                b = prompt("Entrez un nombre")
+                res = mul(a,b)
+                alert("Résultat : " + res)
+                break
+            case '/':
+                a = prompt("Entrez un nombre")
+                b = prompt("Entrez un nombre")
+                res = div(a,b)
+                alert("Résultat : " + res)
+                break
+            case 'P':
+                a = prompt("Entrez n")
+                b = prompt("Entrez p")
+                res = puissance(a,b)
+                alert("Résultat : " + res)
+                break
+            case 'F':
+                a = prompt("Entrez un nombre")
+                res = fact(a)
+                alert("Résultat : " + res)
+                break
+            case 'Q':
+                break;
+            default:
+                alert("Cas non pris en compte")
+                break
+        }
+
+    }while(choix!='Q')
+</script>
+</body>
+</html>
