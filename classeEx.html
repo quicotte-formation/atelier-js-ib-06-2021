@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    class Animal{
+
+        constructor(position=0,vitesse=1,quantiteMax=5,quantiteAbsorbee=0) {
+            this.position = position
+            this.vitesse = vitesse
+            this.quantiteNourritureMax = quantiteMax
+            this.quantiteNourritureAbsorbee = quantiteAbsorbee
+        }
+
+        affiche(){
+            console.log(`position:${this.position} vitesse:${this.vitesse} nourriture max:${this.quantiteNourritureMax} nourriture absorbée:${this.quantiteNourritureAbsorbee}`)
+        }
+    }
+
+    let coccinelle = new Animal()
+    coccinelle.quantiteNourritureMax = 10
+
+    let requin = new Animal()
+    requin.quantiteNourritureAbsorbee = 500
+
+    coccinelle.affiche()
+    requin.affiche()
+
+</script>
+</body>
+</html>
