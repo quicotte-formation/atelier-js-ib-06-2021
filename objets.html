@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+
+    class Vehicule{
+        constructor() {
+            this.x = 0
+            this.y = 0
+        }
+
+        affiche(){
+            console.log( `Position : ${this.x},${this.y}` )
+        }
+
+        avance(){
+            this.x++
+        }
+    }
+
+    class Voiture extends Vehicule{
+
+        avance() {
+            this.x += 10
+        }
+    }
+
+    let v = new Vehicule()
+    v.avance()
+    v.affiche()
+
+</script>
+</body>
+</html>

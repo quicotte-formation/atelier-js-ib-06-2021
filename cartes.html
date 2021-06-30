@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .carte{
+            background-color: black;
+            border-radius: 10px;
+            padding: 75px 50px 75px 50px;
+            margin: 20px
+        }
+
+        .retournee{
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+
+<div id="plateau"></div>
+
+<script>
+
+    let nbPoints = 0
+
+    let retournerCarte = (e) => {
+
+        // Quitte fonctiçon si carte déjà retournée
+        if( e.target.classList.contains('retournee') ){
+            return// Quitte la fonction
+        }
+
+        // carte pas encore retournée
+
+        // Retourne carte
+        let carte = e.target
+        carte.classList.add('retournee')
+
+        // Affiche le trésor à l'intérieur et + points
+        if( carte.hasAttribute('tresor') ){
+            carte.innerHTML = carte.getAttribute('tresor')
+            nbPoints += parseInt( carte.innerHTML )
+        }
+
+        // Cloture éventuellement partie
+        let cartes = document.querySelectorAll('.carte')
+        let cartesRetournees = document.querySelectorAll('.retournee')
+        if( cartes.length/2 < cartesRetournees.length ){
+            // Partie terminée
+            alert(`Partie terminée : ${nbPoints} points !`)
+        }
+    }
+
+    // Demande nb cartes
+    let nbCartes = prompt("Nb cartes ?")
+
+    // Génère cartes
+    for(let i=0;i<nbCartes;i++){
+        let carte = document.createElement('span')
+        carte.classList.add('carte')// Classe
+        carte.addEventListener("click", retournerCarte) // on click
+        document.querySelector('#plateau').appendChild( carte )
+        carte.innerHTML=' '
+
+        // Génère éventuellement un trésor
+        let aleat = Math.round( Math.random() * 5 )
+        if( aleat<3 ){
+            let valTresor = Math.round( Math.random() * 90 ) + 10
+            carte.setAttribute('tresor', valTresor)
+        }
+    }
+</script>
+</body>
+</html>
