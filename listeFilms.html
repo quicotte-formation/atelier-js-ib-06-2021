@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Liste des films</h1>
+    <div id="films"></div>
+<script>
+
+    let films = ['dracula','livre jungle','shining']
+
+    let supprimeFilm = (elem) => {
+        let titreASupprimer = elem.innerHTML
+        films = films.filter( (titre) => titre!=titreASupprimer )
+        refreshFilms()
+    }
+
+    let refreshFilms = () => {
+        document.querySelector('#films').innerHTML = ''
+        films.forEach( (film) => {
+            document.querySelector('#films').innerHTML += `<div ondblclick="supprimeFilm(this)">${film}</div>`
+        } )
+    }
+
+    refreshFilms()
+
+</script>
+</body>
+</html>
