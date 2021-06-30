@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<span id="chrono"></span>
+<input type="button" value="Start" onclick="start()">
+<input type="button" value="Stop" onclick="stop()">
+<input type="button" value="Reset" onclick="reset()">
+
+<script >
+
+    let m=0, s=0, c=0
+    let idM, idS, idC
+
+    let afficheChrono = ()=>{
+        document.querySelector('#chrono').innerHTML = `${m}:${s}:${c}`
+    }
+
+    let incrementeC = ()=>{
+        c++
+        if(c>99){
+            c=0
+            s++
+        }
+        afficheChrono()
+    }
+
+    let incrementeS = ()=>{
+        s++
+        if(s>59){
+            s=0
+            m++
+        }
+        afficheChrono()
+    }
+
+    let incrementeM = ()=>{
+        m++
+        afficheChrono()
+    }
+
+    let reset = ()=>{
+        m=0
+        s=0
+        c=0
+        afficheChrono()
+    }
+
+    let stop = ()=>{
+        clearInterval(idC)
+        clearInterval(idS)
+        clearInterval(idM)
+    }
+
+    let start = ()=>{
+        idM = setInterval( incrementeM, 60 * 1000 )
+        idS = setInterval( incrementeS, 1000 )
+        idC =  setInterval( incrementeC, 10 )
+    }
+
+</script>
+</body>
+</html>
