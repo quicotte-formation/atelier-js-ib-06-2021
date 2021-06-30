@@ -9,26 +9,48 @@
 
     class Animal{
 
-        constructor(position=0,vitesse=1,quantiteMax=5,quantiteAbsorbee=0) {
-            this.position = position
-            this.vitesse = vitesse
-            this.quantiteNourritureMax = quantiteMax
-            this.quantiteNourritureAbsorbee = quantiteAbsorbee
+        constructor(x=0, y=0) {
+            this.x = x
+            this.y = y
+        }
+
+        avancer(){
+            this.x += 1
         }
 
         affiche(){
-            console.log(`position:${this.position} vitesse:${this.vitesse} nourriture max:${this.quantiteNourritureMax} nourriture absorbée:${this.quantiteNourritureAbsorbee}`)
+            console.log(`${this.x},${this.y}`)
         }
     }
 
-    let coccinelle = new Animal()
-    coccinelle.quantiteNourritureMax = 10
+    class Mammifere extends Animal{
 
-    let requin = new Animal()
-    requin.quantiteNourritureAbsorbee = 500
+        avancer() {
+            this.x += 5
+        }
+    }
 
-    coccinelle.affiche()
-    requin.affiche()
+    class Humain extends Mammifere{
+    }
+
+    class Rhino extends Mammifere{
+        avancer() {
+            this.x += 20
+        }
+    }
+
+    class Oiseau extends Animal{
+        avancer() {
+            this.x+=5
+            this.y+=5
+        }
+    }
+
+    let animaux = [ new Humain(), new Rhino(), new Oiseau() ]
+    animaux.forEach( (animal)=>{
+        animal.avancer()
+        animal.affiche()
+    } )
 
 </script>
 </body>
