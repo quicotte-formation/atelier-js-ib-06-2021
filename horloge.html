@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div onclick="startHorloge(this)">CLIQUEZ POUR DEMARRER</div>
+<div onclick="startHorloge(this)">CLIQUEZ POUR DEMARRER</div>
+<div onclick="startHorloge(this)">CLIQUEZ POUR DEMARRER</div>
+
+<script>
+
+    let startHorloge = (elem) => {
+        let h = new Horloge(0,0,0,elem)
+        h.start()
+    }
+
+    class Horloge{
+        constructor(h,m,s,el) {
+            this.h=h
+            this.m=m
+            this.s=s
+            this.el=el
+        }
+
+        avancer(){
+            this.s++
+            if( this.s>59 ){
+                this.m++
+                this.s=0
+                if( this.m>59 ){
+                    this.h++
+                    this.m=0
+                    if( this.h>23 ){
+                        this.h=0
+                    }
+                }
+            }
+
+            this.afficheDOM()
+        }
+
+        afficheConsole(){
+            console.log(`${this.h}:${this.m}:${this.s}`)
+        }
+
+        afficheDOM(){
+            this.el.innerHTML = `${this.h}:${this.m}:${this.s}`
+        }
+
+        start(){
+            setInterval( ()=>{ this.avancer() }, 1000 )
+        }
+    }
+
+
+
+</script>
+</body>
+</html>
